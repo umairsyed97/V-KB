@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Kannu 💕</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: #FAF7F5;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Floating background orbs */
+    .bg-container {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.3;
+      animation: float 20s infinite ease-in-out;
+    }
+
+    .orb1 {
+      width: 500px;
+      height: 500px;
+      background: linear-gradient(135deg, #ffc0cb 0%, #ffb6c1 100%);
+      top: 10%;
+      left: 10%;
+      animation-duration: 20s;
+    }
+
+    .orb2 {
+      width: 400px;
+      height: 400px;
+      background: linear-gradient(135deg, #ffe4b5 0%, #ffc0cb 100%);
+      top: 50%;
+      right: 10%;
+      animation-duration: 25s;
+      animation-delay: 5s;
+    }
+
+    .orb3 {
+      width: 350px;
+      height: 350px;
+      background: linear-gradient(135deg, #ffb6c1 0%, #ffc0cb 100%);
+      bottom: 10%;
+      left: 30%;
+      animation-duration: 18s;
+      animation-delay: 3s;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+      }
+      33% {
+        transform: translate(50px, -50px) scale(1.1);
+      }
+      66% {
+        transform: translate(-30px, 30px) scale(1.05);
+      }
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      font-size: 24px;
+      color: rgba(255, 182, 193, 0.2);
+      animation: floatUp 15s infinite linear;
+      pointer-events: none;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) rotate(0deg) scale(1);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) rotate(360deg) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    /* Hero section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+      padding: 20px;
+    }
+
+    .hero-content {
+      text-align: center;
+      opacity: 0;
+      animation: fadeIn 1.5s forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .hero-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 24px;
+      opacity: 0;
+      animation: fadeInUp 1s 0.5s forwards;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 10vw, 5rem);
+      font-weight: 300;
+      color: rgba(136, 19, 55, 0.8);
+      margin-bottom: 8px;
+      opacity: 0;
+      animation: fadeInUp 1s 0.7s forwards;
+    }
+
+    .hero h1.big {
+      font-size: clamp(3.5rem, 12vw, 6rem);
+      font-weight: 500;
+      color: rgba(136, 19, 55, 0.9);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeInUp 1s 0.9s forwards;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .open-btn {
+      margin-top: 48px;
+      padding: 16px 48px;
+      background: linear-gradient(135deg, #fb7185 0%, #ec4899 100%);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(236, 72, 153, 0.3);
+      opacity: 0;
+      animation: fadeInScale 0.8s 1.5s forwards;
+      transition: all 0.3s;
+    }
+
+    .open-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 40px rgba(236, 72, 153, 0.4);
+    }
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 48px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(251, 113, 133, 0.4);
+      font-size: 14px;
+      animation: bounce 2s infinite;
+      opacity: 0;
+      animation: fadeIn 1s 2s forwards, bounce 2s 3s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateX(-50%) translateY(0);
+      }
+      50% {
+        transform: translateX(-50%) translateY(10px);
+      }
+    }
+
+    /* Message section */
+    .message-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 20px;
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 1s;
+    }
+
+    .message-section.visible {
+      opacity: 1;
+    }
+
+    .card {
+      max-width: 700px;
+      width: 100%;
+      background: linear-gradient(135deg, #FFFCF9 0%, #FFF8F3 100%);
+      padding: clamp(48px, 8vw, 64px);
+      border-radius: 24px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      border: 1px solid rgba(251, 113, 133, 0.1);
+      position: relative;
+      transform: translateY(50px) rotateX(-15deg);
+      transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .message-section.visible .card {
+      transform: translateY(0) rotateX(0);
+    }
+
+    .card:hover {
+      transform: rotateY(2deg) rotateX(-2deg) scale(1.02);
+    }
+
+    .corner {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      border-color: rgba(251, 113, 133, 0.3);
+    }
+
+    .corner.tl {
+      top: 16px;
+      left: 16px;
+      border-left: 2px solid;
+      border-top: 2px solid;
+      border-radius: 8px 0 0 0;
+    }
+
+    .corner.tr {
+      top: 16px;
+      right: 16px;
+      border-right: 2px solid;
+      border-top: 2px solid;
+      border-radius: 0 8px 0 0;
+    }
+
+    .corner.bl {
+      bottom: 16px;
+      left: 16px;
+      border-left: 2px solid;
+      border-bottom: 2px solid;
+      border-radius: 0 0 0 8px;
+    }
+
+    .corner.br {
+      bottom: 16px;
+      right: 16px;
+      border-right: 2px solid;
+      border-bottom: 2px solid;
+      border-radius: 0 0 8px 0;
+    }
+
+    .sparkle {
+      position: absolute;
+      top: -24px;
+      right: -24px;
+      width: 48px;
+      height: 48px;
+      animation: spin 20s linear infinite;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .message-text {
+      color: rgba(136, 19, 55, 0.7);
+      font-size: clamp(18px, 3vw, 20px);
+      line-height: 1.8;
+      font-weight: 300;
+      margin-bottom: 32px;
+    }
+
+    .question {
+      font-size: clamp(32px, 5vw, 40px);
+      text-align: center;
+      color: #881337;
+      font-weight: 500;
+      margin: 32px 0;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-top: 48px;
+      position: relative;
+      flex-wrap: wrap;
+    }
+
+    .yes-btn {
+      padding: 20px 64px;
+      background: linear-gradient(135deg, #fb7185 0%, #ec4899 50%, #fb7185 100%);
+      background-size: 200% 100%;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 20px;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(236, 72, 153, 0.4);
+      position: relative;
+      overflow: hidden;
+      animation: pulse 2s infinite;
+      transition: all 0.3s;
+    }
+
+    .yes-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 12px 32px rgba(236, 72, 153, 0.5);
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    .yes-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      animation: shimmer 2s infinite;
+    }
+
+    @keyframes shimmer {
+      to {
+        left: 100%;
+      }
+    }
+
+    .no-btn {
+      padding: 20px 48px;
+      background: rgba(251, 113, 133, 0.1);
+      color: #881337;
+      border: 1px solid rgba(251, 113, 133, 0.3);
+      border-radius: 50px;
+      font-size: 20px;
+      font-weight: 300;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(251, 113, 133, 0.2);
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .no-btn.running {
+      position: fixed;
+      z-index: 1000;
+    }
+
+    /* Success message */
+    .success {
+      text-align: center;
+      padding-top: 32px;
+    }
+
+    .success h3 {
+      font-size: clamp(40px, 8vw, 56px);
+      color: #e11d48;
+      font-weight: 500;
+      margin-bottom: 24px;
+      animation: successPulse 1.5s infinite;
+    }
+
+    @keyframes successPulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+
+    .success-box {
+      background: rgba(251, 113, 133, 0.05);
+      padding: 32px;
+      border-radius: 16px;
+      border: 1px solid rgba(251, 113, 133, 0.2);
+      margin: 24px 0;
+    }
+
+    .success-box p {
+      color: rgba(136, 19, 55, 0.8);
+      font-size: clamp(18px, 3vw, 20px);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .success-box span {
+      font-weight: 500;
+    }
+
+    .success-heart {
+      width: 64px;
+      height: 64px;
+      margin: 24px auto 0;
+      animation: heartBeat 2s infinite;
+    }
+
+    @keyframes heartBeat {
+      0%, 100% {
+        transform: rotate(0deg);
+      }
+      25% {
+        transform: rotate(5deg);
+      }
+      75% {
+        transform: rotate(-5deg);
+      }
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .yes-btn, .no-btn {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background -->
+  <div class="bg-container">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+    <div id="hearts"></div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <svg class="hero-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="rgba(251, 113, 133, 0.6)" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+      </svg>
+      <h1>For Kannu</h1>
+      <h1 class="big">My Favorite Person</h1>
+      <button class="open-btn" onclick="openMessage()">Open</button>
+      <div class="scroll-indicator">↓</div>
+    </div>
+  </section>
+
+  <!-- Message Section -->
+  <section class="message-section" id="message">
+    <div class="card">
+      <div class="corner tl"></div>
+      <div class="corner tr"></div>
+      <div class="corner bl"></div>
+      <div class="corner br"></div>
+      
+      <svg class="sparkle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="rgba(251, 113, 133, 0.4)" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+      </svg>
+
+      <div id="question-content">
+        <p class="message-text">
+          Every moment with you feels like magic. You bring light to my darkest days and make the ordinary extraordinary. This Valentine's Day, I want to celebrate the beautiful connection we share.
+        </p>
+        
+        <h2 class="question">Will you be my Valentine?</h2>
+        
+        <div class="buttons">
+          <button class="yes-btn" onclick="sayYes()">
+            <span style="position: relative; z-index: 10;">Yes 💕</span>
+          </button>
+          <button class="no-btn" id="noBtn">No</button>
+        </div>
+      </div>
+
+      <div id="success-content" class="success hidden">
+        <h3>It's a Date! ❤️</h3>
+        <div class="success-box">
+          <p>
+            Clear your calendar for <span>February 14th</span>.<br>
+            I've got a plan, and the only thing missing is <span style="font-style: italic;">you</span>.
+          </p>
+        </div>
+        <svg class="success-heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#e11d48">
+          <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Create floating hearts
+    function createHearts() {
+      const container = document.getElementById('hearts');
+      for (let i = 0; i < 8; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.textContent = '♥';
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.animationDelay = i * 2 + 's';
+        heart.style.animationDuration = (15 + Math.random() * 10) + 's';
+        container.appendChild(heart);
+      }
+    }
+
+    createHearts();
+
+    // Open message
+    function openMessage() {
+      const messageSection = document.getElementById('message');
+      messageSection.classList.add('visible');
+      setTimeout(() => {
+        window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+      }, 100);
+      document.querySelector('.scroll-indicator').style.opacity = '0';
+    }
+
+    // Confetti
+    function createConfetti() {
+      const colors = ['#FFB7C5', '#FFA6C9', '#FF99CC', '#FFE5EC', '#FF6B9D', '#FF1493', '#FFB6C1'];
+      
+      for (let burst = 0; burst < 4; burst++) {
+        setTimeout(() => {
+          for (let i = 0; i < 60; i++) {
+            const confetti = document.createElement('div');
+            const isHeart = Math.random() > 0.5;
+            
+            if (isHeart) {
+              confetti.textContent = '♥';
+              confetti.style.fontSize = (Math.random() * 15 + 10) + 'px';
+              confetti.style.color = colors[Math.floor(Math.random() * colors.length)];
+            } else {
+              confetti.style.width = (Math.random() * 10 + 5) + 'px';
+              confetti.style.height = (Math.random() * 10 + 5) + 'px';
+              confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+              confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+            }
+            
+            confetti.style.position = 'fixed';
+            confetti.style.left = (Math.random() * window.innerWidth) + 'px';
+            confetti.style.top = (window.innerHeight * 0.4) + 'px';
+            confetti.style.zIndex = '9999';
+            confetti.style.pointerEvents = 'none';
+            
+            document.body.appendChild(confetti);
+            
+            const angle = Math.random() * Math.PI * 2;
+            const velocity = 15 + Math.random() * 20;
+            const vx = Math.cos(angle) * velocity;
+            let vy = Math.sin(angle) * velocity - Math.random() * 10;
+            let x = parseFloat(confetti.style.left);
+            let y = parseFloat(confetti.style.top);
+            let rotation = Math.random() * 360;
+            
+            function animateConfetti() {
+              vy += 0.6;
+              x += vx * 0.98;
+              y += vy;
+              rotation += (Math.random() - 0.5) * 20;
+              
+              confetti.style.left = x + 'px';
+              confetti.style.top = y + 'px';
+              confetti.style.transform = 'rotate(' + rotation + 'deg)';
+              confetti.style.opacity = Math.max(0, 1 - (y / (window.innerHeight * 1.2)));
+              
+              if (y < window.innerHeight + 100) {
+                requestAnimationFrame(animateConfetti);
+              } else {
+                confetti.remove();
+              }
+            }
+            
+            requestAnimationFrame(animateConfetti);
+          }
+        }, burst * 100);
+      }
+    }
+
+    // Say Yes
+    function sayYes() {
+      document.getElementById('question-content').classList.add('hidden');
+      document.getElementById('success-content').classList.remove('hidden');
+      createConfetti();
+      setTimeout(createConfetti, 300);
+      setTimeout(createConfetti, 600);
+    }
+
+    // No button runs away
+    const noBtn = document.getElementById('noBtn');
+    let isRunning = false;
+
+    document.addEventListener('mousemove', (e) => {
+      if (!noBtn || document.getElementById('success-content').classList.contains('hidden') === false) return;
+      
+      const rect = noBtn.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      
+      const distance = Math.sqrt(
+        Math.pow(e.clientX - centerX, 2) + Math.pow(e.clientY - centerY, 2)
+      );
+      
+      if (distance < 150 && !isRunning) {
+        isRunning = true;
+        noBtn.classList.add('running');
+        
+        const padding = 20;
+        const maxX = window.innerWidth - rect.width - padding;
+        const maxY = window.innerHeight - rect.height - padding;
+        
+        let newX, newY, newDist;
+        let attempts = 0;
+        
+        do {
+          newX = Math.random() * (maxX - padding) + padding;
+          newY = Math.random() * (maxY - padding) + padding;
+          newDist = Math.sqrt(
+            Math.pow(e.clientX - newX, 2) + Math.pow(e.clientY - newY, 2)
+          );
+          attempts++;
+        } while (newDist < 250 && attempts < 10);
+        
+        noBtn.style.left = newX + 'px';
+        noBtn.style.top = newY + 'px';
+        noBtn.style.transition = 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
+        
+        setTimeout(() => {
+          isRunning = false;
+        }, 300);
+      }
+    });
+  </script>
+</body>
+</html>
